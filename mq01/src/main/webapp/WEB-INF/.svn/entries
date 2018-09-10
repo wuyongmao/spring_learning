@@ -1,0 +1,74 @@
+8
+
+dir
+1633
+https://192.168.60.28/svn/cyapps/eps/src/main/webapp/WEB-INF
+https://192.168.60.28/svn/cyapps
+
+
+
+2018-07-05T09:30:32.166384Z
+1633
+wuyongmao
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+2e8a9835-195b-1849-a1a9-2422dc5c0719
+
+data
+dir
+
+dispatcherServlet-servlet.xml
+file
+
+
+
+
+2018-07-05T10:43:01.333000Z
+42d73d6d8cb7a8dca66a033dbdbcfc42
+2018-07-03T08:02:32.824408Z
+1628
+wuyongmao
+
+lib
+dir
+
+views
+dir
+
+web.xml
+file
+
+
+
+
+2018-07-05T10:43:01.414000Z
+f81d71b41a8c7831f359d121160ecce1
+2018-04-24T08:55:48.549751Z
+1295
+wuyongmao
+
+外箱导入模板.xls
+file
+
+https://192.168.60.28/svn/cyapps/eps/src/main/webapp/WEB-INF/%E5%A4%96%E7%AE%B1%E5%AF%BC%E5%85%A5%E6%A8%A1%E6%9D%BF.xls
+
+
+2018-07-05T10:43:01.287000Z
+bd781a4639150bfeff06b28d4d4ff52b
+2018-07-05T09:30:32.166384Z
+1633
+wuyongmao
+has-props
+

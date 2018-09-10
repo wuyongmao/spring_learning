@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">  
+        <property name="cacheManagerConfigFile" value="classpath:spring-shiro-ehcache.xml"/>  
+    </bean>  
+ <!-- 会话管理器 -->
+ 
+	<bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
+		<property name="redirectUrl" value="/loginform" />
+	</bean>
+	<!-- 自定义域realm -->
+	<bean id="custom_Realm" class="com.chenyuantech.shiro.Realms.ShiroRealm.ShiroRealm"></bean>
+	<!-- 安全管理器 ref对象 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="custom_Realm" />
+		 <property name="cacheManager" ref="cacheManager"/>  
+	</bean>
+	<!-- shiro filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 安全管理器必须的 -->
+		<property name="securityManager" ref="securityManager" />
+		<!-- 身份认证失败 认证提交的地址 -->
+		<property name="loginUrl" value="/login.html" />
+		<!-- 权限认证失败 没有权限认证提交的地址 -->
+		<property name="unauthorizedUrl" value="/login.html" />
+		<!-- Shiro连接约束配置,即过滤链的定义 -->
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- 对静态资源设置匿名访问 -->
+				/login/** = anon
+				/inc/** = anon
+				/users/checklogin1 = anon
+				/users/checkACC = anon
+			    /users/adduser = anon
+	        	/logout = logout
+				/images/** = anon
+				/regist.jsp = anon
+			    /** = authc   
+
+			</value>
+		</property>
+	</bean>
+	<!-- Shiro生命周期处理器 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+</beans>
